@@ -6,7 +6,14 @@
 /*   By: azrig <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 08:17:35 by azrig             #+#    #+#             */
-/*   Updated: 2024/11/14 08:18:36 by azrig            ###   ########.fr       */
+/*   Updated: 2024/11/14 11:57:18 by azrig            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	ft_memmove(dest, src, n);
+	return (dest);
+}

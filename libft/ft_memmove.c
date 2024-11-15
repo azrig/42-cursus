@@ -6,7 +6,7 @@
 /*   By: azrig <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 10:12:19 by azrig             #+#    #+#             */
-/*   Updated: 2024/11/14 22:30:49 by azrig            ###   ########.fr       */
+/*   Updated: 2024/11/15 01:40:33 by azrig            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		return (NULL);
 	if (dest > src)
 	{
-		while (n-- > 0)
+		while (n--)
 			dest1[n] = src1[n];
 	}
 	else

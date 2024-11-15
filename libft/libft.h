@@ -6,7 +6,7 @@
 /*   By: azrig <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:06:17 by azrig             #+#    #+#             */
-/*   Updated: 2024/11/15 00:17:26 by azrig            ###   ########.fr       */
+/*   Updated: 2024/11/15 01:47:16 by azrig            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@ void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
 
 #endif

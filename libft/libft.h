@@ -6,7 +6,7 @@
 /*   By: azrig <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 21:06:17 by azrig             #+#    #+#             */
-/*   Updated: 2024/11/15 23:26:34 by azrig            ###   ########.fr       */
+/*   Updated: 2024/11/16 04:29:32 by azrig            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int	ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int	ft_atoi(const char *nptr);
+void	*ft_calloc(size_t nmemb, size_t size);
+char *ft_strdup(const char *s);
 
 #endif

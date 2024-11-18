@@ -28,32 +28,3 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putchar_fd((n % 10) + '0', fd);
 	}
 }
-
-#include <fcntl.h>  // For open
-#include <unistd.h> // For write
-
-int main(void)
-{
-    // Open a file to write output (you can also use STDOUT_FILENO for standard output)
-    int fd = open("output.txt", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-    if (fd < 0)
-    {
-        return 1; // Error opening file
-    }
-
-    // Test cases
-    ft_putnbr_fd(123, fd);          // Output: 123
-    ft_putchar_fd('\n', fd);        // Newline
-    ft_putnbr_fd(-123, fd);         // Output: -123
-    ft_putchar_fd('\n', fd);        // Newline
-    ft_putnbr_fd(0, fd);            // Output: 0
-    ft_putchar_fd('\n', fd);        // Newline
-    ft_putnbr_fd(-2147483648, fd);  // Output: -2147483648
-    ft_putchar_fd('\n', fd);        // Newline
-    ft_putnbr_fd(2147483647, fd);   // Output: 2147483647
-    ft_putchar_fd('\n', fd);        // Newline
-
-    // Close the file
-    close(fd);
-    return 0;
-}

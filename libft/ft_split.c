@@ -52,6 +52,13 @@ char	**ft_split(char const *s, char c)
 			else
 				word_len = ft_strchr(s, c) - s;
 			arr[i] = ft_substr(s, 0, word_len);
+			if (!arr[i])
+			{
+				while (i > 0)
+					free(arr[--i]);
+				free(arr);
+				return (NULL);
+			}
 			i++;
 			s += word_len;
 		}

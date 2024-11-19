@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-static size_t	ft_wordcount(char const *s, char c)
+static int	ft_wordcount(char const *s, char c)
 {
-	size_t	count;
+	int	count;
 
 	count = 0;
 	while (*s)
@@ -29,40 +29,57 @@ static size_t	ft_wordcount(char const *s, char c)
 	return (count);
 }
 
+static void	ft_free(char **str, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
+
+static char	**ft_fill(char **str, char const *s, char c, int n)
+{
+	int	start;
+	int	i;
+	int	word_i;
+
+	start = 0;
+	i = 0;
+	word_i = 0;
+	while (word_i < n)
+	{
+		while (s[i] == c)
+			i++;
+		start = i;
+		while (s[i] != c && s[i])
+			i++;
+		str[word_i] = ft_substr(s, start, i - start);
+		if (!str[word_i])
+		{
+			ft_free(str, word_i);
+			return (NULL);
+		}
+		word_i++;
+	}
+	str[word_i] = NULL;
+	return (str);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	size_t	word_len;
-	int	i;
-	
+
 	if (!s)
 		return (NULL);
-	arr = (char **)malloc((ft_wordcount(s, c) + 1) * sizeof(char *));
+	arr = malloc(sizeof(char *) * (ft_wordcount(s, c) + 1));
 	if (!arr)
 		return (NULL);
-	i = 0;
-	while (*s)
-	{
-		while (*s == c && *s)
-			s++;
-		if (*s)
-		{
-			if (!ft_strchr(s, c))
-				word_len = ft_strlen(s);
-			else
-				word_len = ft_strchr(s, c) - s;
-			arr[i] = ft_substr(s, 0, word_len);
-			if (!arr[i])
-			{
-				while (i > 0)
-					free(arr[--i]);
-				free(arr);
-				return (NULL);
-			}
-			i++;
-			s += word_len;
-		}
-	}
-	arr[i] = NULL;
+	if (!ft_fill(arr, s, c, ft_wordcount(s, c)))
+		return (NULL);
 	return (arr);
 }

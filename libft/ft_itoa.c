@@ -17,47 +17,73 @@ static int	ft_nblen(int nb)
 	int	len;
 
 	len = 0;
-	if (nb <= 0)
-		len++;
 	while (nb != 0)
 	{
-		nb = nb / 10;
 		len++;
+		nb = nb / 10;
 	}
 	return (len);
 }
 
-char	*ft_itoa(int n)
+static char	*ft_putnbr(int n, int digit, int sign)
 {
-	int	i;
 	char	*str;
 
-	i = ft_nblen(n);
-	str = malloc(i + 1);
+	str = malloc(digit + 1);
 	if (!str)
 		return (NULL);
-	str[i] = '\0';
-	i--;
-	if (n == 0)
+	str[digit] = '\0';
+	digit--;
+	while (digit >= 0)
 	{
+		str[digit] = (n % 10) + '0';
+		n = n / 10;
+		digit--;
+	}
+	if (sign)
+		str[0] = '-';
+	return (str);
+}
+
+static char	*ft_edge(int c)
+{
+	char	*str;
+
+	if (c == 0)
+	{
+		str = malloc(2);
+		if (!str)
+			return (NULL);
 		str[0] = '0';
+		str[1] = '\0';
 		return (str);
 	}
-	if (n < 0)
-		str[0] = '-';
-	while (n != 0)
+	if (c == -2147483648)
 	{
-		if (str[0] == '-')
-		{
-			str[i] = '0' - (n % 10);
-			i--;
-		}
-		else
-		{
-			str[i] = '0' + (n % 10);
-			i--;
-		}
-		n = n / 10;
+		str = malloc(12);
+		if (!str)
+			return (NULL);
+		ft_strlcpy(str, "-2147483648", 12);
+		return (str);
 	}
+	return (NULL);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	int		digit;
+	int		sign;
+
+	sign = 0;
+	if (n == 0 || n == -2147483648)
+		return (ft_edge(n));
+	else if (n < 0)
+	{
+		sign = 1;
+		n = -n;
+	}
+	digit = ft_nblen(n) + sign;
+	str = ft_putnbr(n, digit, sign);
 	return (str);
 }

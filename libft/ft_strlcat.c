@@ -6,7 +6,7 @@
 /*   By: azrig <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 15:12:08 by azrig             #+#    #+#             */
-/*   Updated: 2024/11/09 08:23:46 by azrig            ###   ########.fr       */
+/*   Updated: 2024/11/19 11:16:02 by azrig            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t size)
 	size_t	destlen;
 	size_t	srclen;
 
-	if (!src || !dest)
-		return (NULL);
+	if (size == 0)
+		return (ft_strlen(src));
 	destlen = ft_strlen(dest);
 	srclen = ft_strlen(src);
 	if (size <= destlen)

@@ -12,33 +12,26 @@
 
 #include "libft.h"
 
-static int	ft_search(char *s, char c)
-{
-	int	i;
-
-	i = 0;
-	while (s[i])
-		if (s[i] == c)
-			return (1);
-	return (0);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		slen;
-	char	*trim;
-	char	*res;
+	char	*str;
+	int		start;
+	int		end;
 
 	if (!s1 || !set)
 		return (NULL);
-	trim = (char *)s1;
-	while (*trim && ft_search((char *)set, *trim))
-		trim++;
-	slen = ft_strlen(trim);
-	while (slen && ft_search((char *)set, trim[slen - 1]))
-		slen--;
-	res = ft_substr(trim, 0, slen);
-	if (!res)
+	start = 0;
+	end = ft_strlen(s1);
+	while (s1[start] && ft_strchr(set, s1[start]))
+		start++;
+	while (end > start && ft_strchr(set, s1[end - 1]))
+		end--;
+	str = malloc(end - start + 1);
+	if (!str)
 		return (NULL);
-	return (res);
+	if (start == end)
+		str[0] = '\0';
+	else
+		ft_strlcpy(str, &s1[start], end - start + 1);
+	return (str);
 }

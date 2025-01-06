@@ -6,12 +6,11 @@
 /*   By: azrig <azrig@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 14:56:08 by azrig             #+#    #+#             */
-/*   Updated: 2025/01/06 00:23:53 by azrig            ###   ########.fr       */
+/*   Updated: 2025/01/06 02:59:23 by azrig            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_puthexa(unsigned long n, char format)
 {

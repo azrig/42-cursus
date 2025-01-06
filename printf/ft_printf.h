@@ -6,7 +6,7 @@
 /*   By: azrig <azrig@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 14:20:38 by azrig             #+#    #+#             */
-/*   Updated: 2025/01/05 22:51:53 by azrig            ###   ########.fr       */
+/*   Updated: 2025/01/06 01:23:00 by azrig            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_putstr(char *str);
 int	ft_putnbr(int n);
 int	ft_putptr(void *arg);
 int	ft_putun(unsigned int n);
-int	ft_puthexa(unsigned int n, char format);
+int	ft_puthexa(unsigned long n, char format);
+int ft_check(va_list arg, char format);
 
 #endif
